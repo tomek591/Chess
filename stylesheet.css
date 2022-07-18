@@ -1,0 +1,45 @@
+.test {
+    background-color: aqua;
+}
+
+.background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -375px;
+    margin-left: -375px;
+    background-color: #f5f3f0;
+    width: 750px;
+    height: 750px;
+}
+
+.column {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -320px;
+    background-color: #783F10;
+    width: 80px;
+    height: 640px;
+}
+
+.square {
+    display: block;
+    position: static;
+    width: 80px;
+    height: 80px;
+}
+
+.whiteSquare {
+    background-color: #f5eada;
+}
+
+.highlighting {
+    display: block;
+    position: static;
+    width: 70px;
+    height: 70px;
+    border: 5px solid white;
+    border-right-width: 6px;
+}
+
