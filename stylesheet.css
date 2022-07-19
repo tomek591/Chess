@@ -43,3 +43,70 @@
     border-right-width: 6px;
 }
 
+.piece {
+    background-repeat: no-repeat;
+    background-size: 80px;
+    background-position-y: 3px;
+    background-position-x: -1px;
+}
+
+.whitePawn {
+    background-image: url("images/whitePawn.png");
+}
+
+.blackPawn {
+    background-image: url("images/blackPawn.png");
+}
+
+.whiteKing {
+    background-image: url("images/whiteKing.png");
+}
+
+.blackKing {
+    background-image: url("images/blackKing.png");
+}
+
+.whiteQueen {
+    background-image: url("images/whiteQueen.png");
+}
+
+.blackQueen {
+    background-image: url("images/blackQueen.png");
+}
+
+.whiteBishop {
+    background-image: url("images/whiteBishop.png");
+}
+
+.blackBishop {
+    background-image: url("images/blackBishop.png");
+}
+
+.whiteKnight {
+    background-image: url("images/whiteKnight.png");
+}
+
+.blackKnight {
+    background-image: url("images/blackKnight.png");
+}
+
+.whiteRook {
+    background-image: url("images/whiteRook.png");
+}
+
+.blackRook {
+    background-image: url("images/blackRook.png");
+}
+
+.highlightingPiece {
+    display: block;
+    position: static;
+    width: 70px;
+    height: 70px;
+    border: 5px solid white;
+    border-right-width: 6px;
+
+    background-position-y: -2px;
+    background-position-x: -6px;
+}
+
