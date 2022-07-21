@@ -1,4 +1,9 @@
 
+const pieces = [
+    "whitePawn", "blackPawn", "whiteRook", "blackRook", "whiteKnight", "blackKnight",
+    "whiteBishop", "blackBishop", "whiteQueen", "blackQueen", "whiteKing", "blackKing"
+]
+
 function startingPosition() {
     //pawns
     addPiece("a2","whitePawn");
@@ -51,6 +56,40 @@ function addPiece(id,pieceType) {
     document.getElementById(id).classList.add(pieceType);
 }
 
+
+
+function move (moveFromId, moveToId) {
+    //clear moveFrom square
+    document.getElementById(moveFromId).classList.remove("piece");
+    document.getElementById(moveFromId).classList.remove("highlighting");
+    document.getElementById(moveFromId).classList.remove("highlightingPiece");
+    document.getElementById(moveFromId).classList.remove("clicked");
+    //clear moveTo square
+    let pieceToType = getPiece(moveToId);
+    let pieceFromType = getPiece(moveFromId);
+
+    if(pieceToType != null && pieceFromType != null) {
+        document.getElementById(moveToId).classList.remove(pieceToType);
+    }
+
+    if(pieceFromType != null) {
+        document.getElementById(moveFromId).classList.remove(pieceFromType);
+        document.getElementById(moveToId).classList.add("piece");
+        document.getElementById(moveToId).classList.add(pieceFromType);
+    }
+    document.getElementById(moveToId).classList.remove("highlighting");
+    document.getElementById(moveToId).classList.remove("highlightingPiece");
+}
+
+function getPiece(id) {
+    for(const element of pieces) {
+        if (document.getElementById(id).classList.contains(element)) {
+            return element;
+        }
+    }
+    return null;
+}
+
 document.querySelectorAll(".square").forEach(square =>
     square.addEventListener("mouseenter", () => {
             if(square.classList.contains("piece")) {
@@ -63,10 +102,37 @@ document.querySelectorAll(".square").forEach(square =>
 
 document.querySelectorAll(".square").forEach(square =>
     square.addEventListener("mouseleave", () => {
-        if(square.classList.contains("piece")) {
-            square.classList.remove("highlightingPiece")
-        } else {
-            square.classList.remove("highlighting")
+            if(square.classList.contains("piece")) {
+                square.classList.remove("highlightingPiece")
+            } else {
+                square.classList.remove("highlighting")
+            }
         }
+    ))
+
+let clickedFrom;
+let clickedTo;
+document.querySelectorAll(".square").forEach(square =>
+    square.addEventListener("click", () => {
+
+            if(clickedFrom !== undefined) {
+                clickedTo = square.id;
+                square.classList.remove('clicked');
+            } else {
+                clickedFrom = square.id;
+                square.classList.add('clicked');
+            }
+
+            if(clickedFrom !== undefined && clickedTo !== undefined && clickedTo !== clickedFrom) {
+                move(clickedFrom, clickedTo);
+                clickedFrom = undefined;
+                clickedTo = undefined;
+            }
+
+            //this solves square click animation problem
+            if(clickedTo === clickedFrom) {
+                clickedFrom = undefined;
+                clickedTo = undefined;
+            }
         }
     ))
